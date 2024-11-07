@@ -37,6 +37,7 @@ const printPlaylists = function() {
   }
 };
 printPlaylists();
+
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
@@ -44,7 +45,7 @@ printPlaylists();
 const printTracks = function() {
   for (let trackId in library.tracks) {
     const track = library.tracks[trackId];
-    console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`)
+    console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
   }
 };
 printTracks(library.p01);
@@ -63,36 +64,44 @@ const printPlaylist = function(playlistId) {
 };
 printPlaylist('p01');
 printPlaylist('p02');
+
 // adds an existing track to an existing playlist
-const addTrackToPlaylist = function(trackId, playlistId) {
-
-}
-
+const addTrackToPlaylist = function(playlistId, trackId) {
+  const playlist = library.playlists[playlistId];
+  if (playlist && library.tracks[trackId]) {
+    playlist.tracks.push(trackId);
+  }
+};
+addTrackToPlaylist('p01', 't03');
 
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+};
 
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
-}
-
+  const id = generateUid();
+  library.tracks[id] = {id, name, artist, album };
+  console.log(`Track ${id} added to the library`);
+};
+addTrack('New Song', 'New Artist', 'New Album');
 
 // adds a playlist to the library
-const addPlaylist = function(name) {
-
-}
-
+const addPlaylist = function(name, trackIds = []) {
+  const id = generateUid();
+  library.playlists[id] = {id, name, tracks: trackIds};
+  console.log(`Playlist ${id} added to the library`);
+};
+addPlaylist('New Playlist', ['t01', 't03']);
 
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
-// tip: use "string".search("tri") 
+// tip: use "string".search("tri")
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 const printSearchResults = function(query) {
 
-}
+};
