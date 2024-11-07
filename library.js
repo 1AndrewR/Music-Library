@@ -90,12 +90,12 @@ const addTrack = function(name, artist, album) {
 addTrack('New Song', 'New Artist', 'New Album');
 
 // adds a playlist to the library
-//const addPlaylist = function(name, trackIds = []) {
-//  const id = generateUid();
-//  library.playlists[id] = {id, name, tracks: trackIds};
-//  console.log(`Playlist ${id} added to the library`);
-//};
-//addPlaylist('New Playlist', ['t01', 't03']);
+const addPlaylist = function(name, trackIds = []) {
+  const id = generateUid();
+  library.playlists[id] = {id, name, tracks: trackIds};
+  console.log(`Playlist ${id} added to the library`);
+};
+addPlaylist('New Playlist', ['t01', 't03']);
 
 // STRETCH:
 // given a query string string, prints a list of tracks
