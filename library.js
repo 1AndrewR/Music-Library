@@ -57,7 +57,7 @@ addTrackToPlaylist: function(playlistId, trackId) {
   if (playlist && this.tracks[trackId]) {
     playlist.tracks.push(trackId);
   }
-},
+}
 addTrackToPlaylist('p01', 't03');
 
 // generates a unique id
@@ -68,10 +68,10 @@ const generateUid = function() {
 
 
 // adds a track to the library
-const addTrack = function(name, artist, album) {
-  const id = generateUid();
-  library.tracks[id] = {id, name, artist, album };
-};
+addTrack: function(name, artist, album) {
+  const id = this.generateUid();
+  this.tracks[id] = { id, name, artist, album };
+},
 addTrack('New Song', 'New Artist', 'New Album');
 
 // adds a playlist to the library
